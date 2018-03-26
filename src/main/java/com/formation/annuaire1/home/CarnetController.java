@@ -31,7 +31,7 @@ public class CarnetController {
 	 public List<Carnet> getAllRest(Model model) {
 		return this.listeCarnets;
 	}
-    @GetMapping("/carnetshtml")
+    @GetMapping("/carnetshtml") // Tout recuperer
     public ModelAndView getAll(){
         ModelAndView maVue = new ModelAndView("pages/carnets");
      // Ici on indique que dans le fichier carnets on retourne une liste: listeCarnets
