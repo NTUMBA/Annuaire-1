@@ -31,6 +31,7 @@ public class CarnetController {
 	 public List<Carnet> getAllRest(Model model) {
 		return this.listeCarnets;
 	}
+	//comment
     @GetMapping("/carnetshtml")
     public ModelAndView getAll(){
         ModelAndView maVue = new ModelAndView("pages/carnets");
