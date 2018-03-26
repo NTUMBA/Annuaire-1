@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 	
 	
-	@GetMapping("/")// pour renvoyer une page
+	@GetMapping("/")// pour renvoyer une page doonnee
 	@ResponseBody  // et ensuite son contenu 
 	public String index() {
 		return "<h1>Hello world !</h1>";
