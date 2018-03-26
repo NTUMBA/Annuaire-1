@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Fiche employer</title>
+		<link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+	</head>
+	<body>
+		<section>
+			<img src="../../static/img/moines.jpg" alt="moines">
+			<h1>FICHE D'UN EMPLOYER</h1>
+			<ul>
+			    <li th:text="${carnet.civilite}"></li>
+			    <li th:text="${carnet.nom}"></li>
+			    <li th:text="${carnet.prenom}"></li>
+			    <li th:text="${carnet.dateDeNaissance}"></li>
+			    <li th:text="${carnet.tel}"></li>
+			    <li th:text="${carnet.email}"></li>
+			    <li th:text="${carnet.cp}"></li>
+			    <li th:text="${carnet.ville}"></li>
+			</ul>
+		</section>
+	</body>
+</html>
+
