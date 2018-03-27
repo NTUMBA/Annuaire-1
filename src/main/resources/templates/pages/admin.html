@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang ="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Cheetcheat HTML5">
+		<title>Inscription</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+	</head>
+	
+	<body>
+		<section>
+		<img src="../../static/img/moines.jpg" alt="moines">
+		<h1> Formulaire d'inscription </h1>
+			
+			<form name="formulaire" th:action ="@{/carnet}"th:object= "${carnet}" method="post">
+			
+			  <div class="userIdentification">
+				
+				<label for="nom">Entrez votre nom</label>
+				<input type="text" id="nom" name="nom" value="nom" ></br>
+				
+				<label for="prenom">Entrez votre prenom</label>
+				<input type="text" id="prenom" name="prenom" value="prenom" ></br>
+				
+				<label for="email">Entrez votre adresse email</label>
+				<input type="text" id="email" name="email" value="email"> 
+			  
+			  
+			   <label for="passWord">Entrez votre mot de passe</label>
+				<input type="text" id="passWord" name="passWord" value="passWord"> 
+				
+			<h2>Envoyez vos réponses</h2>
+				<input type="submit" value="Validez" class="response"> <!--Valider le contenu du formulaire -->
+							
+			</form>	
+		
+		
+		</section>
+			
+	</body>
+
+</html>

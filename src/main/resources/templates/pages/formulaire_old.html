@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang ="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Cheetcheat HTML5">
+		<title>Inscription</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+	</head>
+	
+	<body>
+		<section>
+		<img src="../../static/img/moines.jpg" alt="moines">
+		<h1> Formulaire d'inscription </h1>
+			
+			<form action ="/carnet" method="post">
+			
+			  <div class="userIdentification">
+				<label>Indiquez votre état civil</label>
+				Monsieur <input type="radio" name="ouinon" checked> 
+				Madame<input type="radio" name="ouinon" >  </br>
+				<label>Entrez votre nom</label>
+				<input type="text" name="nom" value="nom" ></br>
+				<label>Entrez votre prenom</label>
+				<input type="text" name="prenom" value="prenom" ></br>
+				<label>Entrez votre adresse email</label>
+				<input type="text" name="email" value="email"> 
+			  </div>
+			  <div class="userLocalisation">
+				<label>Entrez votre date de naissance</label>
+				<input type="text" name="dateDeNaissance" value="dateDeNaissance" ></br>
+				<label>Entrez votre N° de téléphone</label>
+				<input type="text" name="tel" value="tel" ></br>
+				<label>Entrez votre code postal</label>
+				<input type="text" name="cp" value="cp" ></br>
+				<label>Indiquez le nom de votre ville</label>
+				<input type="text" name="ville" value="ville" >
+			  </div>
+				
+			<h2>Envoyez vos réponses</h2>
+				<input type="submit" value="Validez" class="response"> <!--Valider le contenu du formulaire -->
+							
+			</form>	
+		
+		
+		</section>
+			
+	</body>
+
+</html>

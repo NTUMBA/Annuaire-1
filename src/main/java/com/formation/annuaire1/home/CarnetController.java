@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,17 +45,45 @@ public class CarnetController {
 	//Pour acceder au formulaire via la methode get: REQUETE
     @RequestMapping(value = "/carnet", method = RequestMethod.GET)
     public ModelAndView getFormulaire(){
-    	ModelAndView maVue = new ModelAndView("/pages/formulaire");
-    	return maVue;
+    	// On cree un nouvel objet qui genere une nouvelle page formulaire et l envoi au user
+    	return new ModelAndView("pages/formulaire").addObject("carnet", new Carnet());
+    	
     }
 
-				
-// Pour recuperer les nouvelles donnees du formulaire	 via la methode post: SOUMISSION	
-	@RequestMapping(value ="/carnet", method = RequestMethod.POST)
-	public void add(@ModelAttribute Carnet carnet){ // Recuperation des attributs du model (
+    			
+// Pour recuperer les nouvelles donnees du formulaire via la methode post: SOUMISSION	
+    @RequestMapping(value ="/carnetNew", method = RequestMethod.POST)
+	// Pour le formulaire j ai supprime void et mis le type List<Carnet> 
+	public ModelAndView add(@Validated Carnet carnet, BindingResult bindingResult){ // Recuperation des attributs du model  
+    	//
+    	if(bindingResult.hasErrors()){
+    		// En cas d erreur dans le formuaire rempli
+    		// Renvoyer un message d erreur
+    		return new ModelAndView("pages/formulaire.html").addObject("carnet", carnet);
+    		//return "errorview";
+    	}
 		carnet.setId(listeCarnets.size() + 1);// La longeur du tableau +1
 		listeCarnets.add(carnet); // Ce que tu viens de recuperer tu me l ajoute dans ma liste
+		// Ensuite j ai rajoute un retun 
+		//Ainsi sur l url localhost:8080/carnet, j'ai EN JSON la liste avec la data en plus
+		//return this.listeCarnets;
+		return new ModelAndView("pages/carnets.html").addObject("carnets", this.listeCarnets);
+		//ModelAndView maVue = new ModelAndView("/pages/carnets");
+		//maVue.addObject("carnets", this.listeCarnets);
+    	//return maVue;
+		
 	}
+    
+    
+    
+ // Pour supprimer un employer avec ses donnees du formulaire via la methode post: SOUMISSION	
+  //  @RequestMapping(value ="/carnetNewDeal", method = RequestMethod.POST)
+	
+//	public ModelAndView destroy
+    
+    
+    
+
 	
 // Pour acceder au donnees d un employer en fonction de l id que l on marque sur URL (1, 2 ou 3) d ou la methode get
 	    @RequestMapping(method = RequestMethod.GET, value = "/carnet/{id}")

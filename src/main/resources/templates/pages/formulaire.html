@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang ="fr">
+<html lang ="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="Cheetcheat HTML5">
@@ -13,28 +13,44 @@
 		<img src="../../static/img/moines.jpg" alt="moines">
 		<h1> Formulaire d'inscription </h1>
 			
-			<form action ="/carnet" method="post">
+			<form name="formulaire" th:action ="@{/carnetNew}"th:object= "${carnet}" method="post">
 			
 			  <div class="userIdentification">
-				<label>Indiquez votre état civil</label>
-				Monsieur <input type="radio" name="ouinon" checked> 
-				Madame<input type="radio" name="ouinon" >  </br>
-				<label>Entrez votre nom</label>
-				<input type="text" name="nom" value="nom" ></br>
-				<label>Entrez votre prenom</label>
-				<input type="text" name="prenom" value="prenom" ></br>
-				<label>Entrez votre adresse email</label>
-				<input type="text" name="email" value="email"> 
+				<label for="mr">Monsieur</label>
+				 <input type="radio" id="mr"  th:field="*{civilite}" value="MONSIEUR"> 
+				 
+				 <label for="mme">Madame</label>
+				<input type="radio" id="mme"  th:field="*{civilite}" value="MADAME" >  
+				<!-- Message d erreur-->
+				<p th:if="${#fields.hasErrors('civilite')}" th:errors="*{civilite}"></p>
+				</br>
+				
+				<label for="nom">Entrez votre nom</label>
+				<input type="text" id="nom" name="nom"  ></br>
+				<p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+				
+				<label for="prenom">Entrez votre prenom</label>
+				<input type="text" id="prenom" name="prenom" ></br>
+				<p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></p>
+				<label for="email">Entrez votre adresse email</label>
+				<input type="text" id="email" name="email"> 
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 			  </div>
+			  
 			  <div class="userLocalisation">
-				<label>Entrez votre date de naissance</label>
-				<input type="text" name="dateDeNaissance" value="dateDeNaissance" ></br>
-				<label>Entrez votre N° de téléphone</label>
-				<input type="text" name="tel" value="tel" ></br>
-				<label>Entrez votre code postal</label>
-				<input type="text" name="cp" value="cp" ></br>
-				<label>Indiquez le nom de votre ville</label>
-				<input type="text" name="ville" value="ville" >
+				<label for="dateDeNaissance">Entrez votre date de naissance</label>
+				<input type="text" id="dateDeNaissance" name="dateDeNaissance"  ></br>
+				
+				<label for="tel">Entrez votre N° de téléphone</label>
+				<input type="text" id="tel" name="tel"  ></br>
+				<p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></p>
+				<label  for="cp">Entrez votre code postal</label>
+				<input type="text" id="cp" name="cp"  ></br>
+				<p th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></p>
+				
+				<label for="ville">Indiquez le nom de votre ville</label>
+				<input type="text" id="ville" name="ville"  >
+				<p th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></p>
 			  </div>
 				
 			<h2>Envoyez vos réponses</h2>

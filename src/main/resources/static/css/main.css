@@ -85,3 +85,12 @@ input{
 	color: #FFE;
 	font-weight: bold;
 }
+
+
+/*##########################PSEUDO CLASS ####*/
+@media(max-width: 450px){
+	h1{
+		font-size: 0.5em;
+		
+		}
+		
