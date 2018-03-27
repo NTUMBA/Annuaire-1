@@ -1,13 +1,29 @@
 package com.formation.annuaire1.canet;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+@Entity // On indique a Spring que cette classe est une Entite
+@Table(name="personne")
 public class Carnet {
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // fait reference a la persistence des data
+	private Long id;
+	
+	@Enumerated(EnumType.STRING)// On cree un varchar et non un int
+	@Column(length = 8 )// Un vachar de taille 8
 	@NotNull(message="Veuillez cochez l' une des deux cases ") 
 	private Civilite civilite ;
 	
@@ -38,7 +54,9 @@ public class Carnet {
 	private String ville;
 	
 	// CONSTRUCTEUR	
-	public Carnet(int id, Civilite civilite,String nom, String prenom, String email, String dateDeNaissance, String tel,
+	
+	// On modifie  le type de l id
+	public Carnet(Long id, Civilite civilite,String nom, String prenom, String email, String dateDeNaissance, String tel,
 			String cp, String ville) {
 		this.id = id;
 		this.civilite = civilite;
@@ -57,10 +75,10 @@ public class Carnet {
 	// GETTERS ET SETTERS
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Civilite getCivilite() {
