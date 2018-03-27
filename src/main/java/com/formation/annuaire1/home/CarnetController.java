@@ -1,5 +1,7 @@
 package com.formation.annuaire1.home;
 
+import com.formation.annuaire1.Repositories.CarnetRepository;
+import com.formation.annuaire1.Services.CarnetService;
 import com.formation.annuaire1.canet.*;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -31,6 +34,10 @@ public class CarnetController {
 			new Carnet(2, Civilite.MADAME, "Ullmann", "Liv", "1938-12-16", "0101010101", "1-16-5", "22", "Tokyo"),
 			new Carnet(3, Civilite.MONSIEUR, "Lynch", "David", "1946-01-20", "0202020202", "423 Fire Terrace", "59801",
 					"Missoula")));
+	
+	// On fait appel au service
+	 @Autowired
+		CarnetService carnetService;
 	
 	@GetMapping("/carnets")// Renvoie la liste de carnet en json
 	 public List<Carnet> getAllRest(Model model) {
@@ -117,5 +124,8 @@ public class CarnetController {
 	    	}
 	    	//listeCarnet.removeIf(obj -> obj.getId().equals(id)); // Destroy à partir de java 8
 	    }
+	    
+	    
+	   
 	}
 
