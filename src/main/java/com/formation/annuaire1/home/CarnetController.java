@@ -4,6 +4,7 @@ import com.formation.annuaire1.canet.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -104,6 +105,17 @@ public class CarnetController {
 	        	maVue.addObject(str.toString(),str);
 	        }
 	        return maVue;
+	    }
+	    @RequestMapping(value ="/carnet/{id}")
+	    public void delete(@PathVariable Long id){
+	    	Iterator<Carnet> it = listeCarnets.iterator();
+	    	while(it.hasNext()){
+	    		Carnet carnet = it.next();
+	    		if (carnet.getId() == id){
+	    			it.remove();
+	    		}
+	    	}
+	    	//listeCarnet.removeIf(obj -> obj.getId().equals(id)); // Destroy à partir de java 8
 	    }
 	}
 
